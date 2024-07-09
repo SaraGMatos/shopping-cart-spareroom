@@ -1,74 +1,29 @@
+const calculateProductTotal = require("./util");
+
 function calculateCartSubtotal(cart) {
-  let subtotal = 0;
-  let normalPrice;
-  let discountedPrice;
-  let minimumItemsForDiscount;
+  let cartSubtotal = 0;
 
   for (const product of cart) {
-    let numOfItemsWithoutOffer;
-    let numOfOffersToApply;
-    let totalWithOfferApplied;
-    let totalWithoutOfferApplied;
-
     switch (product.code) {
       case "A":
-        normalPrice = 50;
-        discountedPrice = 140;
-        minimumItemsForDiscount = 3;
-
-        numOfItemsWithoutOffer = product.quantity % minimumItemsForDiscount;
-        numOfOffersToApply =
-          (product.quantity - numOfItemsWithoutOffer) / minimumItemsForDiscount;
-        totalWithOfferApplied = numOfOffersToApply * discountedPrice;
-        totalWithoutOfferApplied = numOfItemsWithoutOffer * normalPrice;
-
-        subtotal += totalWithOfferApplied + totalWithoutOfferApplied;
-
+        cartSubtotal += calculateProductTotal(product, 50, 3, 140);
         break;
+
       case "B":
-        normalPrice = 35;
-        discountedPrice = 60;
-        minimumItemsForDiscount = 2;
-
-        numOfItemsWithoutOffer = product.quantity % minimumItemsForDiscount;
-        numOfOffersToApply =
-          (product.quantity - numOfItemsWithoutOffer) / minimumItemsForDiscount;
-        totalWithOfferApplied = numOfOffersToApply * discountedPrice;
-        totalWithoutOfferApplied = numOfItemsWithoutOffer * normalPrice;
-
-        subtotal += totalWithOfferApplied + totalWithoutOfferApplied;
-
+        cartSubtotal += calculateProductTotal(product, 35, 2, 60);
         break;
+
       case "C":
-        normalPrice = 25;
-        discountedPrice = 25;
-        minimumItemsForDiscount = 1;
-
-        numOfItemsWithoutOffer = product.quantity % minimumItemsForDiscount;
-        numOfOffersToApply =
-          (product.quantity - numOfItemsWithoutOffer) / minimumItemsForDiscount;
-        totalWithOfferApplied = numOfOffersToApply * discountedPrice;
-        totalWithoutOfferApplied = numOfItemsWithoutOffer * normalPrice;
-
-        subtotal += totalWithOfferApplied + totalWithoutOfferApplied;
+        cartSubtotal += calculateProductTotal(product, 25);
         break;
+
       case "D":
-        normalPrice = 12;
-        discountedPrice = 12;
-        minimumItemsForDiscount = 1;
-
-        numOfItemsWithoutOffer = product.quantity % minimumItemsForDiscount;
-        numOfOffersToApply =
-          (product.quantity - numOfItemsWithoutOffer) / minimumItemsForDiscount;
-        totalWithOfferApplied = numOfOffersToApply * discountedPrice;
-        totalWithoutOfferApplied = numOfItemsWithoutOffer * normalPrice;
-
-        subtotal += totalWithOfferApplied + totalWithoutOfferApplied;
+        cartSubtotal += calculateProductTotal(product, 12);
         break;
     }
   }
 
-  return subtotal;
+  return cartSubtotal;
 }
 
 module.exports = calculateCartSubtotal;

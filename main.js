@@ -1,5 +1,25 @@
 const calculateProductTotal = require("./util");
 
+/**
+ * Calculates the cart subtotal.
+ * @param {array.<Object>} cart An array of Product objects.
+ * @example cart example
+ * const cart = [{ code: "A", quantity: 3 },
+        { code: "B", quantity: 5 },
+        { code: "C", quantity: 4 },
+        { code: "D", quantity: 3 }]
+ * @returns {number} The subtotal for the passed cart.
+ * 
+ * @example function example
+ * const cart = [{ code: "A", quantity: 3 },
+        { code: "B", quantity: 5 },
+        { code: "C", quantity: 4 },
+        { code: "D", quantity: 3 }];
+  *
+  *const subtotal = calculateCartSubtotal(cart);
+  *console.log(subtotal);
+  *Logs: 431
+ */
 function calculateCartSubtotal(cart) {
   let cartSubtotal = 0;
 

@@ -40,10 +40,31 @@ function calculateCartSubtotal(cart) {
 
         break;
       case "C":
-        subtotal += product.quantity * 25;
+        normalPrice = 25;
+        discountedPrice = 25;
+        minimumItemsForDiscount = 1;
+
+        numOfItemsWithoutOffer = product.quantity % minimumItemsForDiscount;
+        numOfOffersToApply =
+          (product.quantity - numOfItemsWithoutOffer) / minimumItemsForDiscount;
+        totalWithOfferApplied = numOfOffersToApply * discountedPrice;
+        totalWithoutOfferApplied = numOfItemsWithoutOffer * normalPrice;
+
+        subtotal += totalWithOfferApplied + totalWithoutOfferApplied;
         break;
       case "D":
-        subtotal += product.quantity * 12;
+        normalPrice = 12;
+        discountedPrice = 12;
+        minimumItemsForDiscount = 1;
+
+        numOfItemsWithoutOffer = product.quantity % minimumItemsForDiscount;
+        numOfOffersToApply =
+          (product.quantity - numOfItemsWithoutOffer) / minimumItemsForDiscount;
+        totalWithOfferApplied = numOfOffersToApply * discountedPrice;
+        totalWithoutOfferApplied = numOfItemsWithoutOffer * normalPrice;
+
+        subtotal += totalWithOfferApplied + totalWithoutOfferApplied;
+        break;
     }
   }
 

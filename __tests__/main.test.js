@@ -61,22 +61,24 @@ describe("calculateCartSubtotal", () => {
   });
 
   test("when given an array of Product Objects where multiple offers apply, function returns the correct total", () => {
-    const dataset1 = [
+    const dataset = [
       { code: "A", quantity: 3 },
       { code: "B", quantity: 2 },
       { code: "C", quantity: 0 },
       { code: "D", quantity: 0 },
     ];
 
-    expect(calculateCartSubtotal(dataset1)).toBe(200);
+    expect(calculateCartSubtotal(dataset)).toBe(200);
+  });
 
-    const dataset2 = [
+  test("when given an array of Product Objects where offers and normal prices apply, function returns the correct total", () => {
+    const dataset = [
       { code: "A", quantity: 6 },
       { code: "B", quantity: 4 },
       { code: "C", quantity: 1 },
       { code: "D", quantity: 2 },
     ];
 
-    expect(calculateCartSubtotal(dataset2)).toBe(449);
+    expect(calculateCartSubtotal(dataset)).toBe(449);
   });
 });

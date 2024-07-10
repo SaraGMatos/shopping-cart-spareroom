@@ -8,8 +8,8 @@
  *  }
  * @param {number} normalPrice The product's usual price.
  * @param {number} minimumItemsForDiscount The minimum number of items needed for a discount to apply. For Product A, it will be 3; for Product B, it will be 2. It defaults to 1 for those products with no available offer.
- * @param {number} discountedPrice The price to apply to a particular number of items (3 items for Product A, and 2 items for Product B). For Product A, the discounted price will be 140; for Product B, it will be 60. It defaults to the normal price for those products with no available offer.
- * @returns {number} The total for the current product.
+ * @param {number} specialPrice The price to apply to a particular number of items. For Product A, the special price will be 140 for 3; for Product B, it will be 60 for 2. It defaults to the normal price for those products with no available offer.
+ * @returns {number} A number representing the total for the current product.
  *
  * @example Function example
  * const product = {
@@ -18,9 +18,9 @@
  * };
  * const normalPrice = 50;
  * const minimumItemsForDiscount = 3;
- * const discountedPrice = 140;
+ * const specialPrice = 140;
  *
- * const productTotal = calculateProductTotal(product, normalPrice, minimumItemsForDiscount, discountedPrice);
+ * const productTotal = calculateProductTotal(product, normalPrice, minimumItemsForDiscount, specialPrice);
  * console.log(productTotal);
  * Logs: 100
  */
@@ -29,7 +29,7 @@ function calculateProductTotal(
   product,
   normalPrice,
   minimumItemsForDiscount = 1,
-  discountedPrice = normalPrice
+  specialPrice = normalPrice
 ) {
   let productTotal = 0;
 
@@ -41,7 +41,7 @@ function calculateProductTotal(
   const numOfOffersToApply =
     (product.quantity - numOfItemsWithoutOffer) / minimumItemsForDiscount;
 
-  const totalWithOfferApplied = numOfOffersToApply * discountedPrice;
+  const totalWithOfferApplied = numOfOffersToApply * specialPrice;
   const totalWithoutOfferApplied = numOfItemsWithoutOffer * normalPrice;
 
   productTotal += totalWithOfferApplied + totalWithoutOfferApplied;

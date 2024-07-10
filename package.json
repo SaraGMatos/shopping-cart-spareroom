@@ -1,11 +1,11 @@
 {
   "name": "shopping-cart-spareroom",
   "version": "1.0.0",
-  "description": "",
+  "description": "A JavaScript solution to implementing a simple checkout system.",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "prepare": "husky"  
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",

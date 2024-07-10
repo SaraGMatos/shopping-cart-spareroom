@@ -1,4 +1,4 @@
-const calculateProductTotal = require("../util");
+const calculateProductTotal = require("../src/utils");
 
 describe("calculateProductTotal", () => {
   test("returns a number", () => {

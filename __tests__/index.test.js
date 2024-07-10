@@ -1,4 +1,4 @@
-const calculateCartSubtotal = require("../main");
+const calculateCartSubtotal = require("../src");
 
 describe("calculateCartSubtotal", () => {
   test("function returns a number", () => {

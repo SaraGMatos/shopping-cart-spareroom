@@ -1,16 +1,36 @@
 const calculateCartSubtotal = require("../main");
 
 describe("calculateCartSubtotal", () => {
-  test("returns a number", () => {
+  test("function returns a number", () => {
     const dataset = [{ code: "A", quantity: 1 }];
 
     expect(typeof calculateCartSubtotal(dataset)).toBe("number");
   });
 
-  test("when given an empty array, returns zero", () => {
+  test("when given an empty array, function returns zero", () => {
     const dataset = [];
 
     expect(calculateCartSubtotal(dataset)).toBe(0);
+  });
+
+  test("function does not mutate dataset", () => {
+    const dataset = [
+      { code: "A", quantity: 3 },
+      { code: "B", quantity: 2 },
+      { code: "C", quantity: 0 },
+      { code: "D", quantity: 0 },
+    ];
+
+    const datasetCopy = [
+      { code: "A", quantity: 3 },
+      { code: "B", quantity: 2 },
+      { code: "C", quantity: 0 },
+      { code: "D", quantity: 0 },
+    ];
+
+    calculateCartSubtotal(dataset);
+
+    expect(dataset).toEqual(datasetCopy);
   });
 
   describe("Product A", () => {
